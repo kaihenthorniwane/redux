@@ -9,6 +9,7 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <Header />
+      <div id="modal"></div>
       <Shop>
         {DUMMY_PRODUCTS.map((product) => (
           <li key={product.id}>
