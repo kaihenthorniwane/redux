@@ -38,6 +38,17 @@ export const cartSlice = createSlice({
         state.items.push(newCartItem);
       }
     },
-    removeFromCart(state, action: PayloadAction<{ id: string }>) {},
+    removeFromCart(state, action: PayloadAction<{ id: string }>) {
+      const indexOfCartItem = state.items.findIndex(
+        (item) => item.id === action.payload.id
+      );
+      if (state.items[indexOfCartItem].quantity === 1) {
+        state.items.splice(indexOfCartItem, 1);
+      } else {
+        state.items[indexOfCartItem].quantity--;
+      }
+    },
   },
 });
+
+export const { addToCart, removeFromCart } = cartSlice.actions;
